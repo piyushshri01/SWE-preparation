@@ -1,3 +1,4 @@
+// O(n^3)
 // function countTripleteWithSumSmallerThanGvnSum(arr, sum){
 //     let i , j , k, tot;
 //     let count = 0;
@@ -17,7 +18,7 @@
 
 // console.log(countTripleteWithSumSmallerThanGvnSum([5, 1, 3, 4, 7], 12));
 
-
+// O(n^2)
 function countTripleteWithSumSmallerThanGvnSum(array, sum){
     let arr = array.sort(); // [1, 3, 4, 5, 7]
     let i , j , k, tot;

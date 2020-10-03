@@ -57,7 +57,7 @@ function allPalPartitions(string) {
     for(let i = 0; i < allPart.length; i++){
         for (let j = 0; j < allPart[i].length; j++){
             // console.log(allPart[i][j], end = " ") 
-            console.log(allPart[i][j], end = " ") 
+            console.log(allPart[i][j]) 
             // newArr.push(allPart[i][j])
         }
     console.log();
