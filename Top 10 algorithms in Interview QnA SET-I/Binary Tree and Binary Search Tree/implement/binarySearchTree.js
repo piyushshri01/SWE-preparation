@@ -8,7 +8,7 @@ class Node{
 }
 
 // BT
-class BinaryTree{
+class BinarySearchTree{
     constructor(){
         this.root = null;
     }
@@ -60,10 +60,69 @@ class BinaryTree{
         console.log(levelOrder)
     }
 
+
+    // Height of a tree
+    Height(root){
+        if (!root) return 0
+        else{
+            let lHeight = this.Height(root.left)
+            let rHeight = this.Height(root.right)
+
+            if(lHeight > rHeight) return lHeight+1
+            else return rHeight+1
+        }   
+    }
+
+    InPred(root) {
+        while (root && root.right) {
+            root = root.right;
+        }
+        return root;
+    }
+
+    InSucc(root) {
+        while (root && root.left) {
+            root = root.left;
+        }
+        return root;
+    }
+
+    DeleteInTree(root, val) {
+        if (!root) {
+            return null;
+        }
+        if (!root.left && !root.right) {
+            if (root === this.root) {
+                this.root = null;
+            }
+            root = null;
+            return root;
+        }
+        if (root.data === val) {
+            let q;
+            if (this.Height(root.left) > this.Height(root.right)) {
+                q = this.InPred(root.left);
+                root.data = q.data;
+                root.left = this.DeleteInTree(root.left, q.data);
+
+            } else {
+                q = this.InSucc(root.right);
+                root.data = q.data;
+                root.right = this.DeleteInTree(root.right, q.data);
+            }
+
+        } else if (root.data < val) {
+            root.right = this.DeleteInTree(root.right, val);
+        } else {
+            root.left = this.DeleteInTree(root.left, val);
+        }
+        return root;
+    }
+
 }
 
 // Obj
-let tr = new BinaryTree();
+let tr = new BinarySearchTree();
 
 // insert op.
 tr.insert(20);
