@@ -18,7 +18,7 @@ class BinaryTree:
             return
         qu = []
         qu.append(self.root)
-        while True:
+        while len(qu) > 0:
             parentNode = qu.pop(0)
             print("Enter",parentNode.val,"Left Node")
             val = input()
@@ -27,9 +27,6 @@ class BinaryTree:
                 parentNode.left = newNode
                 qu.append(newNode)
             
-            if not val:
-                return 
-
             print("Enter",parentNode.val,"Right Node")
             val = input()
             if not parentNode.right and val:

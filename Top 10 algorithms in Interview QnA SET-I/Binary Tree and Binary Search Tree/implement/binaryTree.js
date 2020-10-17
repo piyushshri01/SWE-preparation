@@ -19,7 +19,7 @@ class BinaryTree{
         this.root = newNode;
         let qu = [];
         qu.push(this.root);
-        while(true){
+        while(qu.length > 0){
             let parentNode = qu.shift();
             val = prompt(`Enter ${parentNode.val} Left Node `);
             if(!parentNode.left && val) {
@@ -27,7 +27,6 @@ class BinaryTree{
                 parentNode.left = newNode;
                 qu.push(newNode);
             } 
-            if (!val || val == null || val == '' || val == Boolean) return this.root;
             
             val = prompt(`Enter ${parentNode.val} Right Node `);
             if(!parentNode.right && val) {
@@ -76,7 +75,7 @@ class BinaryTree{
         if (!root) return;
 
         this.inOrder(root.left)
-        console.log(root.vals)
+        console.log(root.val)
         this.inOrder(root.right)
     }
 
@@ -100,14 +99,14 @@ class BinaryTree{
         qu.push(p)
         console.log(p.val)
         while (qu.length > 0) {
-            deQu = qu.shift()
+            let deQu = qu.shift()
             if (deQu.left){
                 console.log(deQu.left.val)
-                qu.append(deQu.left)
+                qu.push(deQu.left)
             }
             if (deQu.right){
                 console.log(deQu.right.val) 
-                qu.append(deQu.right)
+                qu.push(deQu.right)
             }
         }
     }
@@ -119,7 +118,7 @@ class BinaryTree{
         while(st.length > 0 && p) {
             if (p){
                 console.log(p.val)
-                st.append(p)
+                st.push(p)
                 p = p.left
             }
             else{
@@ -134,7 +133,7 @@ class BinaryTree{
         let st = []
         while(st.length > 0 && p) {
             if (p){
-                st.append(p)
+                st.push(p)
                 p = p.left
             }
             else{
